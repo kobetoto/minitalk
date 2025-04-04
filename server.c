@@ -6,38 +6,58 @@
 /*   By: thodavid <thodavid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 12:51:14 by thodavid          #+#    #+#             */
-/*   Updated: 2025/04/02 14:31:52 by thodavid         ###   ########.fr       */
+/*   Updated: 2025/04/04 15:07:39 by thodavid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-███████ ███████ ██████  ██    ██ ███████ ██████  
-██      ██      ██   ██ ██    ██ ██      ██   ██ 
-███████ █████   ██████  ██    ██ █████   ██████  
-     ██ ██      ██   ██  ██  ██  ██      ██   ██ 
-███████ ███████ ██   ██   ████   ███████ ██   ██ 
+███████ ███████ ██████  ██    ██ ███████ ██████
+██      ██      ██   ██ ██    ██ ██      ██   ██
+███████ █████   ██████  ██    ██ █████   ██████
+	 ██ ██      ██   ██  ██  ██  ██      ██   ██
+███████ ███████ ██   ██   ████   ███████ ██   ██
 */
 
 #include "minitalk.h"
 
-void	handler(int	sig)
+void handler(int sig)
 {
-	(void) sig;
-	printf("\nhandler serve function\n\n");
+	(void)sig;
+	ft_printf("\nhandler serve function\n\n");
 }
 
-
-int	main(void)
+c handle_siguser(int sig)
 {
-	/*déclares une structure qui va contenir la configuration du comportement à adopter quand ton programme reçoit un signal (ici SIGUSR1).*/
-	struct sigaction sact;
+	if (sig == SIGUSR1)
+	{
+		
+		printf("\nbits is ==1==\n");
+	}
+	if	(sig == SIGUSR2)
+	{
+		
+		printf("\nbits is ==0==\n");
+	}
+}
 
-	ft_printf("pid SERV: %d\n", getpid());
-	sigemptyset(&act.sa_mask);
-	/*sa_handler est un pointeur vers une fonction qui prend un int (le signal reçu) et ne retourne rien (void).*/
-	sact.sa_handler = handler;
-	sigaction(SIGUSR1, &sact, NULL);
+int main(void)
+{
+	struct sigaction sa;
+	
+	sa.sa_handler = &handle_siguser;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = 0;
+	
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
+	ft_printf("PID SERV: %d\n", getpid());
+	while (1)
+	{
+		sleep(2);
+		ft_printf("SERVER ACTIVE...");
+	}
+	
 
-	kill(1654671, SIGUSR1);
 	return (0);
 }
+
