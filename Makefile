@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thodavid <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: thodavid <thodavid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/02 10:54:39 by thodavid          #+#    #+#              #
-#    Updated: 2025/04/02 13:08:34 by thodavid         ###   ########.fr        #
+#    Updated: 2025/04/04 10:08:03 by thodavid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,8 @@ CFLAGS		= -Wall -Wextra -Werror
 ################################################################################
 ## SOURCES
 
-SRCS_SERVER		= server.c
-SRCS_CLIENT		= client.c
+SRCS_SERVER		= server.c tools.c
+SRCS_CLIENT		= client.c tools.c
 
 OBJS_SERVER		= $(SRCS_SERVER:.c=.o)
 OBJS_CLIENT		= $(SRCS_CLIENT:.c=.o)
