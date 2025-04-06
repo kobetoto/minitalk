@@ -6,7 +6,7 @@
 #    By: thodavid <thodavid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/02 10:54:39 by thodavid          #+#    #+#              #
-#    Updated: 2025/04/04 10:08:03 by thodavid         ###   ########.fr        #
+#    Updated: 2025/04/06 12:38:21 by thodavid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,14 @@
 NAME		= server
 NAME2		= client
 
-CC		= cc
+CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 
 ################################################################################
 ## SOURCES
 
-SRCS_SERVER		= server.c tools.c
-SRCS_CLIENT		= client.c tools.c
+SRCS_SERVER		= server.c tools.c libft_tools.c
+SRCS_CLIENT		= client.c tools.c libft_tools.c
 
 OBJS_SERVER		= $(SRCS_SERVER:.c=.o)
 OBJS_CLIENT		= $(SRCS_CLIENT:.c=.o)
@@ -33,7 +33,6 @@ OBJS_CLIENT		= $(SRCS_CLIENT:.c=.o)
 ## REGLES
 
 all: $(NAME) $(NAME2)
-
 
 ########## LINKING #############
 $(NAME): $(OBJS_SERVER)
